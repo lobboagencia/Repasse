@@ -1,0 +1,7 @@
+{
+  "name": "RepasseJá - B2B Auto Hub",
+  "description": "A professional B2B automotive liquidity hub for car dealers to trade stock efficiently.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
