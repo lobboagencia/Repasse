@@ -37,7 +37,7 @@ const Login: React.FC<LoginProps> = ({ onLogin, onForgotPassword, onRegister }) 
           <div className="w-20 h-20 bg-orange-600 rounded-[28px] flex items-center justify-center text-white font-black text-4xl italic mx-auto shadow-xl shadow-orange-600/20">R</div>
           <div className="space-y-1">
             <h2 className="text-3xl font-black text-slate-900 tracking-tighter">RepasseJá</h2>
-            <p className="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">B2B Auto Liquidity Hub</p>
+            <p className="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">Subtitulo</p>
           </div>
         </div>
 
