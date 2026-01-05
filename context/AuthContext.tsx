@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
@@ -19,7 +18,8 @@ const AuthContext = createContext<AuthContextType>({
   logout: async () => {},
 });
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+// Fix: Use React.FC to explicitly define children prop support for better type inference at the call site.
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();

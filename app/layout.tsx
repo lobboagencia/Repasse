@@ -1,4 +1,4 @@
-// Fix: Added missing React import to resolve 'Cannot find namespace React' and children type resolution
+// Fix: Use a standard prop type definition and compact JSX to resolve component children inference errors.
 import React from 'react';
 import './globals.css';
 import { AuthProvider } from '../context/AuthContext';
@@ -18,14 +18,12 @@ export const metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="pt-br" className={jakarta.variable}>
       <body className="bg-[#F8FAFC] text-slate-900 antialiased font-sans">
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );
