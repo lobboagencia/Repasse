@@ -1,107 +1,29 @@
 
-import { Vehicle, PlanType, User } from './types';
+import { Vehicle, PlanType, User, Report } from './types';
 
-export const MOCK_USER: User = {
-  id: 'u1',
-  name: 'Ricardo Silva',
-  email: 'ricardo@rsmotors.com.br',
-  dealership: 'RS Motors',
-  plan: PlanType.PRO,
-  reputation: 4.8,
-  avatar: 'https://i.pravatar.cc/150?u=ricardo'
+export const INITIAL_USER: User = {
+  id: '',
+  name: '',
+  email: '',
+  dealership: '',
+  plan: PlanType.FREE,
+  reputation: 0,
+  avatar: 'https://ui-avatars.com/api/?name=User&background=f97316&color=fff'
 };
 
-export const MOCK_VEHICLES: Vehicle[] = [
-  {
-    id: 'v1',
-    make: 'Toyota',
-    model: 'Corolla',
-    version: '2.0 XEi Direct Shift',
-    year: 2022,
-    modelYear: 2023,
-    km: 45000,
-    price: 115000,
-    retailPrice: 128000,
-    city: 'São Paulo',
-    state: 'SP',
-    images: [
-      'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1623859627214-871162ca4987?q=80&w=1200&auto=format&fit=crop'
-    ],
-    reportStatus: 'verified',
-    dealer: 'Premium Auto',
-    dealerId: 'd100',
-    createdAt: '2023-10-25T10:00:00Z',
-    fuel: 'Flex',
-    transmission: 'Automático',
-    color: 'Prata',
-    description: 'Veículo de único dono, todas as revisões na concessionária. Sem detalhes de pintura.',
-    features: ['Ar digital', 'Bancos em couro', 'Câmera de ré', 'Piloto automático']
-  },
-  {
-    id: 'v2',
-    make: 'Jeep',
-    model: 'Compass',
-    version: '2.0 T270 Longitude',
-    year: 2021,
-    modelYear: 2021,
-    km: 32000,
-    price: 135000,
-    retailPrice: 152000,
-    city: 'Campinas',
-    state: 'SP',
-    images: ['https://images.unsplash.com/photo-1606611013016-969c19ba27bb?q=80&w=1200&auto=format&fit=crop'],
-    reportStatus: 'verified',
-    dealer: 'J-Store Dealers',
-    dealerId: 'd101',
-    createdAt: '2023-10-26T14:30:00Z',
-    fuel: 'Flex',
-    transmission: 'Automático',
-    color: 'Branco Pérola',
-    features: ['Teto solar', 'Multimídia 10"', 'Start/Stop']
-  },
-  {
-    id: 'v3',
-    make: 'Honda',
-    model: 'Civic',
-    version: '1.5 Turbo Touring',
-    year: 2019,
-    modelYear: 2020,
-    km: 68000,
-    price: 98000,
-    retailPrice: 112000,
-    city: 'Curitiba',
-    state: 'PR',
-    images: ['https://images.unsplash.com/photo-1599912027611-484b9fc447af?q=80&w=1200&auto=format&fit=crop'],
-    reportStatus: 'pending',
-    dealer: 'Global Car',
-    dealerId: 'd102',
-    createdAt: '2023-10-27T09:15:00Z',
-    fuel: 'Gasolina',
-    transmission: 'CVT',
-    color: 'Preto',
-    features: ['Honda Sensing', 'Lanewatch', 'Som Premium']
-  },
-  {
-    id: 'v4',
-    make: 'Volkswagen',
-    model: 'Golf',
-    version: '2.0 TSI GTI',
-    year: 2020,
-    modelYear: 2020,
-    km: 25000,
-    price: 185000,
-    retailPrice: 205000,
-    city: 'Belo Horizonte',
-    state: 'MG',
-    images: ['https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=1200&auto=format&fit=crop'],
-    reportStatus: 'verified',
-    dealer: 'Exclusive Stock',
-    dealerId: 'd103',
-    createdAt: '2023-10-27T11:45:00Z',
-    fuel: 'Gasolina',
-    transmission: 'DSG',
-    color: 'Vermelho',
-    features: ['Painel Digital', 'Modos de condução', 'Faróis LED Full']
-  }
-];
+/**
+ * Mock user data used as a fallback for components that require a user context,
+ * specifically for demonstration purposes and listing creation within this B2B environment.
+ */
+export const MOCK_USER: User = {
+  id: 'usr_mock_123',
+  name: 'Lojista Exemplo',
+  email: 'comercial@repasseja.com.br',
+  dealership: 'RepasseJá Veículos',
+  plan: PlanType.PRO,
+  reputation: 4.8,
+  avatar: 'https://ui-avatars.com/api/?name=RepasseJa&background=f97316&color=fff'
+};
+
+export const INITIAL_VEHICLES: Vehicle[] = [];
+export const INITIAL_REPORTS: Report[] = [];

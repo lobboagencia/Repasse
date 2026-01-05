@@ -37,6 +37,46 @@ export interface Vehicle {
   fipeCode?: string;
 }
 
+export interface Report {
+  id: string;
+  plate: string;
+  model: string;
+  date: string;
+  status: 'approved' | 'warning' | 'rejected';
+  score: number;
+}
+
+export interface AsaasPayment {
+  id: string;
+  invoiceUrl: string;
+  bankSlipUrl?: string;
+  pixQrCode?: string;
+  pixKey?: string;
+  status: 'PENDING' | 'RECEIVED' | 'CONFIRMED' | 'OVERDUE';
+  value: number;
+}
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  dealership: string;
+  plan: PlanType;
+  reputation: number;
+  avatar?: string;
+  asaasCustomerId?: string;
+}
+
+export interface Notification {
+  id: string;
+  title: string;
+  message: string;
+  timestamp: Date;
+  read: boolean;
+  type: 'proposal' | 'counter' | 'status' | 'system' | 'payment';
+  link?: string;
+}
+
 export interface Proposal {
   id: string;
   vehicleId: string;
@@ -71,41 +111,9 @@ export interface Chat {
   updatedAt: string;
 }
 
-export interface User {
-  id: string;
-  name: string;
-  email?: string;
-  dealership: string;
-  plan: PlanType;
-  reputation: number;
-  avatar?: string;
-}
-
-export interface Notification {
-  id: string;
-  title: string;
-  message: string;
-  timestamp: Date;
-  read: boolean;
-  type: 'proposal' | 'counter' | 'status' | 'system';
-  link?: string;
-}
-
-export interface FipeBrand {
-  nome: string;
-  codigo: string;
-}
-
-export interface FipeModel {
-  nome: string;
-  codigo: string;
-}
-
-export interface FipeYear {
-  nome: string;
-  codigo: string;
-}
-
+export interface FipeBrand { nome: string; codigo: string; }
+export interface FipeModel { nome: string; codigo: string; }
+export interface FipeYear { nome: string; codigo: string; }
 export interface FipePrice {
   Valor: string;
   Marca: string;

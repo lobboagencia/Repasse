@@ -1,23 +1,29 @@
 
 import React from 'react';
 import { Check, Star, Shield, Zap, TrendingUp, Users } from 'lucide-react';
+import { PlanType } from '../types';
 
-const Plans: React.FC = () => {
+interface PlansProps {
+  onSelectPlan: (plan: any) => void;
+  currentPlan: PlanType;
+}
+
+const Plans: React.FC<PlansProps> = ({ onSelectPlan, currentPlan }) => {
   const plans = [
     {
       name: 'Free', price: 'R$ 0', description: 'Para quem está começando no repasse.',
       features: ['Até 3 anúncios simultâneos', 'Chat básico', 'Marketplace B2B', 'Notificações'],
-      cta: 'Manter atual', highlight: false
+      cta: 'Manter atual', highlight: false, type: PlanType.FREE
     },
     {
       name: 'Pro', price: 'R$ 297', description: 'Essencial para o lojista ativo.',
       features: ['Anúncios ilimitados', '10 Consultas cautelares/mês', 'Importação automática', 'Selo Verificado', 'Prioridade'],
-      cta: 'Assinar Pro', highlight: true
+      cta: 'Assinar Pro', highlight: true, type: PlanType.PRO
     },
     {
       name: 'Premium', price: 'R$ 897', description: 'Para operações de alto giro.',
       features: ['Consultas ilimitadas', 'Destaque fixo', 'Insights de AI', 'Suporte VIP', 'Multi-usuários'],
-      cta: 'Falar com Consultor', highlight: false
+      cta: 'Assinar Premium', highlight: false, type: PlanType.PREMIUM
     },
   ];
 
@@ -38,16 +44,21 @@ const Plans: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {plans.map((plan) => (
-          <div key={plan.name} className={`relative flex flex-col p-10 rounded-[48px] transition-all duration-700 hover:shadow-2xl ${plan.highlight ? 'bg-white border-4 border-orange-600 shadow-orange-600/10 scale-105 z-10' : 'bg-white border border-slate-100 shadow-sm'}`}>
+          <div key={plan.name} className={`relative flex flex-col p-10 rounded-[48px] transition-all duration-700 hover:shadow-2xl ${plan.highlight ? 'bg-white border-4 border-orange-600 shadow-orange-600/10 scale-105 z-10' : 'bg-white border border-slate-100 shadow-sm'} ${currentPlan === plan.type ? 'opacity-60 ring-4 ring-emerald-500/20' : ''}`}>
             {plan.highlight && <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-orange-600 text-white text-[10px] font-black px-6 py-2.5 rounded-full uppercase tracking-widest">Mais Popular</span>}
+            
             <div className="mb-10">
-              <h3 className={`text-2xl font-black tracking-tight mb-4 ${plan.highlight ? 'text-orange-600' : 'text-slate-900'}`}>{plan.name}</h3>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className={`text-2xl font-black tracking-tight ${plan.highlight ? 'text-orange-600' : 'text-slate-900'}`}>{plan.name}</h3>
+                {currentPlan === plan.type && <span className="text-[8px] font-black text-emerald-600 bg-emerald-50 px-2 py-1 rounded-lg uppercase tracking-widest">Plano Atual</span>}
+              </div>
               <div className="flex items-baseline gap-2">
                 <span className="text-4xl font-black text-slate-900 tracking-tighter">{plan.price}</span>
                 {plan.price !== 'R$ 0' && <span className="text-slate-400 text-[10px] font-black uppercase tracking-widest">/mês</span>}
               </div>
               <p className="text-sm text-slate-400 font-medium mt-6 leading-relaxed">{plan.description}</p>
             </div>
+            
             <div className="flex-1 space-y-4 mb-10">
               {plan.features.map((feature, i) => (
                 <div key={i} className="flex items-start gap-3">
@@ -56,7 +67,14 @@ const Plans: React.FC = () => {
                 </div>
               ))}
             </div>
-            <button className={`w-full py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 ${plan.highlight ? 'bg-orange-600 text-white shadow-xl' : 'bg-slate-900 text-white shadow-lg'}`}>{plan.cta}</button>
+
+            <button 
+              disabled={currentPlan === plan.type}
+              onClick={() => plan.type !== PlanType.FREE && onSelectPlan(plan)}
+              className={`w-full py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 ${currentPlan === plan.type ? 'bg-slate-100 text-slate-300' : plan.highlight ? 'bg-orange-600 text-white shadow-xl' : 'bg-slate-900 text-white shadow-lg'}`}
+            >
+              {currentPlan === plan.type ? 'Seu Plano' : plan.cta}
+            </button>
           </div>
         ))}
       </div>
